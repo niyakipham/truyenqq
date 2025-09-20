@@ -21,7 +21,7 @@ echo "🚀 Okay các sếp! Hãy sẽ bắt đầu hành trình 'khám phá' $TO
 
 BASE_URL="https://truyenqqgo.com/truyen-moi-cap-nhat/trang-1.html"
 
-SELECTOR='div.last_chapter > a[href]'
+SELECTOR='div.book_avatar > a[href]'
 
 for (( page=1; page<=TOTAL_PAGES; page++ ))
 do
@@ -33,7 +33,7 @@ do
         echo -e "\n🔎 Đang phân tích Trang $page tại: $current_url"
     fi
 
-        # Thực hiện "tuyệt chiêu" với bộ lọc đã được nâng cấp
+     
     links_found=$(curl -sL "$current_url" | pup "$SELECTOR attr{href}")
 
     if [ -n "$links_found" ]; then
@@ -43,7 +43,9 @@ do
     else
         echo "không tìm thấy link nào khớp với bộ lọc siêu chính xác này ở trang hiện tại.>
     fi
-
+    
+    echo "💤 Tạm nghỉ 2 giây..."
+    sleep 2
 
 done
 
